@@ -12,4 +12,8 @@ public class CASMath {
 	public static MathContext getDecimalContext() {
 		return DECIMAL_CONTEXT;
 	}
+	
+	public static BigDecimal decimalFrom(double from) {
+		return new BigDecimal(from, CASMath.getDecimalContext());
+	}
 }
