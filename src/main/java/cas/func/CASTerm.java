@@ -7,8 +7,11 @@ import javax.annotation.Nonnull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
+@EqualsAndHashCode
 public class CASTerm implements ICASFunc {
 	@Getter
 	private BigDecimal coefficient;
@@ -35,11 +38,12 @@ public class CASTerm implements ICASFunc {
 	}
 	
 	@Data
-	@AllArgsConstructor
 	public static class Component {
+		@NonNull
 		private CASTerm base;
+		@NonNull
 		private BigDecimal exponent;
-		
+
 		@Override
 		public String toString() {
 			return base.toString() + "^" + exponent;
