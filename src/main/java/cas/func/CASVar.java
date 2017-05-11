@@ -4,6 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 
+/**
+ * A CASVar holds a variable name and should be equal to and have the same hashCode as any other CASVar with the same 
+ * stored name. A CASVar should be immutable. 
+ *  
+ * @author eukaryote
+ *
+ */
 @EqualsAndHashCode
 public class CASVar implements ICASFunc {
 	@Getter

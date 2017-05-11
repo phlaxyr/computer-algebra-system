@@ -7,6 +7,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 
+/**
+ * A CASSum is a sum of multiple terms. This can be used to represent a polynomial, for instance. Subtraction is 
+ * represented as negative coefficients in terms. 
+ * 
+ * @author eukaryote
+ *
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 public class CASSum implements ICASFunc {
