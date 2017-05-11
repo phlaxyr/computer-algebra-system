@@ -43,7 +43,7 @@ public class CASTerm implements ICASFunc {
 		@NonNull
 		private ICASFunc base;
 		@NonNull
-		private BigDecimal exponent;
+		private ICASFunc exponent;
 
 		@Override
 		public String toString() {
