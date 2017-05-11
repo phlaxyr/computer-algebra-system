@@ -2,11 +2,11 @@ package cas.func;
 
 import java.math.BigDecimal;
 
-import javax.annotation.Nonnull;
+import lombok.NonNull;
 
 public class CASNumber extends CASTerm {
 
-	public CASNumber(@Nonnull BigDecimal value) {
+	public CASNumber(@NonNull BigDecimal value) {
 		super(value, null);
 	}
 

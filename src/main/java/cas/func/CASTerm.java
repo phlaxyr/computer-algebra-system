@@ -3,9 +3,8 @@ package cas.func;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,9 +14,11 @@ import lombok.NonNull;
 public class CASTerm implements ICASFunc {
 	@Getter
 	private BigDecimal coefficient;
+	
+	@Nullable
 	private Component[] parts;
 	
-	public CASTerm(@Nonnull BigDecimal coefficient, @Nonnull Component[] parts) {
+	public CASTerm(@NonNull BigDecimal coefficient, @NonNull Component[] parts) {
 		this.coefficient = coefficient;
 		this.parts = parts;
 	}

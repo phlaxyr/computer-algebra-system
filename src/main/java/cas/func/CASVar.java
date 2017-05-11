@@ -1,16 +1,15 @@
 package cas.func;
 
-import javax.annotation.Nonnull;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
 @EqualsAndHashCode
 public class CASVar implements ICASFunc {
 	@Getter
 	private String varname;
 
-	public CASVar(@Nonnull String varname) {
+	public CASVar(@NonNull String varname) {
 		this.varname = varname;
 	}
 
