@@ -41,7 +41,7 @@ public class CASTerm implements ICASFunc {
 	@Data
 	public static class Component {
 		@NonNull
-		private CASTerm base;
+		private ICASFunc base;
 		@NonNull
 		private BigDecimal exponent;
 
