@@ -1,6 +1,8 @@
 package cas.util;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -89,5 +91,34 @@ public class BigRational implements Comparable<BigRational> {
 
 	public BigRational negate() {
 		return build(numerator.negate(), denominator);
+	}
+
+	public BigRational abs() {
+		return isNegative() ? negate() : this;
+	}
+
+	public BigRational reciprocal() {
+		return build(denominator, numerator);
+	}
+
+	public BigRational add(BigRational o) {
+		return build(this.numerator.multiply(o.denominator).add(this.denominator.multiply(o.numerator)),
+				this.denominator.multiply(o.denominator));
+	}
+
+	public BigRational subtract(BigRational o) {
+		return add(o.negate());
+	}
+
+	public BigRational multiply(BigRational o) {
+		return build(o.numerator.multiply(this.numerator), o.denominator.multiply(this.denominator));
+	}
+
+	public BigRational divide(BigRational o) {
+		return build(o.denominator.multiply(this.numerator), o.numerator.multiply(this.denominator));
+	}
+
+	public double doubleValue() {
+		return new BigDecimal(numerator).divide(new BigDecimal(denominator), 32, RoundingMode.HALF_EVEN).doubleValue();
 	}
 }
