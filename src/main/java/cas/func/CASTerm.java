@@ -32,7 +32,7 @@ public class CASTerm implements ICASFunc {
 	@Nullable
 	private Component[] parts;
 	
-	public CASTerm(@NonNull BigDecimal coefficient, @NonNull Component[] parts) {
+	public CASTerm(@NonNull BigDecimal coefficient, Component[] parts) {
 		this.coefficient = coefficient;
 		this.parts = parts;
 	}
