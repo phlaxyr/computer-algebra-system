@@ -23,7 +23,7 @@ public class BigRational implements Comparable<BigRational> {
 	public static BigRational build(long value) {
 		return build(BigInteger.valueOf(value), BigInteger.ONE);
 	}
-	
+
 	public static BigRational build(long numerator, long denominator) {
 		return build(BigInteger.valueOf(numerator), BigInteger.valueOf(denominator));
 	}
@@ -45,7 +45,7 @@ public class BigRational implements Comparable<BigRational> {
 		if (parts.length == 2)
 			return build(new BigInteger(parts[0]), new BigInteger(parts[1]));
 		else if (parts.length == 1)
-		return build(new BigInteger(parts[0]), BigInteger.ONE);
+			return build(new BigInteger(parts[0]), BigInteger.ONE);
 		else
 			throw new IllegalArgumentException("For input string: \"" + s + "\"");
 	}
@@ -71,6 +71,11 @@ public class BigRational implements Comparable<BigRational> {
 
 	private void reduce() {
 		BigInteger g = numerator.gcd(denominator);
+		
+		// if both are negative
+		if(numerator.signum() == -1 && denominator.signum() == -1)
+			g = g.negate();
+		
 		numerator = numerator.divide(g);
 		denominator = denominator.divide(g);
 	}
