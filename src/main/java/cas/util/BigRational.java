@@ -6,13 +6,16 @@ import java.math.RoundingMode;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
 @EqualsAndHashCode
 public class BigRational implements Comparable<BigRational> {
 	@Getter
+	@NonNull
 	private BigInteger numerator;
 
 	@Getter
+	@NonNull
 	private BigInteger denominator;
 
 	// Force static factory methods //
@@ -20,12 +23,16 @@ public class BigRational implements Comparable<BigRational> {
 	public static BigRational build(long value) {
 		return build(BigInteger.valueOf(value), BigInteger.ONE);
 	}
+	
+	public static BigRational build(long numerator, long denominator) {
+		return build(BigInteger.valueOf(numerator), BigInteger.valueOf(denominator));
+	}
 
 	/**
 	 * Static factory method for BigRational. Returns either cached BigRational
 	 * or newly constructed one.
 	 */
-	public static BigRational build(BigInteger numerator, BigInteger denominator) {
+	public static BigRational build(@NonNull BigInteger numerator, @NonNull BigInteger denominator) {
 		return new BigRational(numerator, denominator);
 	}
 
@@ -38,12 +45,14 @@ public class BigRational implements Comparable<BigRational> {
 		if (parts.length == 2)
 			return build(new BigInteger(parts[0]), new BigInteger(parts[1]));
 		else if (parts.length == 1)
-			return build(new BigInteger(parts[0]), BigInteger.ONE);
+		return build(new BigInteger(parts[0]), BigInteger.ONE);
 		else
 			throw new IllegalArgumentException("For input string: \"" + s + "\"");
 	}
 
 	private BigRational(BigInteger numerator, BigInteger denominator) {
+		this.numerator = numerator;
+		this.denominator = denominator;
 
 		// ensure denominator != 0
 		if (denominator.equals(BigInteger.ZERO)) {
